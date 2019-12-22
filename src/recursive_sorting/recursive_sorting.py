@@ -20,62 +20,63 @@ https://codereview.stackexchange.com/questions/154135/recursive-merge-sort-in-py
 
 """
 
- 
 
-def merge( arrA, arrB ):
-    elements = len( arrA ) + len( arrB )
+def merge(arrA, arrB):
+    elements = len(arrA) + len(arrB)
     #merged_arr = [0] * elements
     leftindex, rightindex = 0, 0
-    result=[]
-    while leftindex <len(arrA) and rightindex <len(arrB):
+    result = []
+    while leftindex < len(arrA) and rightindex < len(arrB):
         if arrA[leftindex] < arrB[rightindex]:
             result.append(arrA[leftindex])
-            leftindex += 1 #way to account for all the elements for each appended & find the remaining 
+            leftindex += 1  # way to account for all the elements for each appended & find the remaining
             print("leftindex:", leftindex, "result left<right", result)
         else:
             result.append(arrB[rightindex])
-            rightindex +=1
+            rightindex += 1
             print("rightindex:", rightindex, "result left>right:", result)
     # TO-DO
-    result +=arrA[leftindex:]
-    result +=arrB[rightindex:]
+    result += arrA[leftindex:]
+    result += arrB[rightindex:]
     return result
-#https://www.geeksforgeeks.org/iterative-merge-sort/
+# https://www.geeksforgeeks.org/iterative-merge-sort/
 
 # TO-DO: implement the Merge Sort function below USING NONRECURSION
 
-def merge_sort( arr ):
+
+def merge_sort(arr):
     # TO-DO
-    if len(arr)>1:
-        mid = len(arr)/2 #find the mid of array
-        L = arr[:mid] #split array to left
-        R = arr[mid:] #split array to right
-     
+    if len(arr) > 1:
+        mid = int(len(arr)/2)  # find the mid of array
+        L = arr[:mid]  # split array to left
+        R = arr[mid:]  # split array to right
 
-
-        merge_sort(L) #sort first half
-        merge_sort(R) #sort 2nd half
+        merge_sort(L)  # sort first half
+        merge_sort(R)  # sort 2nd half
 
         i = j = k = 0
         while i < len(L) and j < len(R):
-            if L[i] <R[j]:
+            if L[i] < R[j]:
                 arr[k] = L[i]
-                i+=1
-            else: 
+                i += 1
+            else:
                 arr[k] = R[j]
-                j+=1
-            k+=1
+                j += 1
+            k += 1
 
-    #check if any element was left
+    # check if any element was left
         while i < len(L):
             arr[k] = L[i]
-            i+=1
-            k+=1
+            i += 1
+            k += 1
         while j < len(R):
             arr[k] = R[j]
-            j+=1
-            k+=1
+            j += 1
+            k += 1
+    print("merge:", arr)
+    return arr
 
+merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
 # TO-DO: implement the Merge Sort function below USING RECURSION
 """
 def merge_sort( arr ):
@@ -96,7 +97,8 @@ def merge_in_place(arr, start, mid, end):
 
     return arr
 
-def merge_sort_in_place(arr, l, r): 
+
+def merge_sort_in_place(arr, l, r):
     # TO-DO
 
     return arr
@@ -104,6 +106,6 @@ def merge_sort_in_place(arr, l, r):
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
-def timsort( arr ):
+def timsort(arr):
 
     return arr
