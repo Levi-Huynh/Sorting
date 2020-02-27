@@ -26,8 +26,10 @@ def merge(arrA, arrB):
     #merged_arr = [0] * elements
     leftindex, rightindex = 0, 0
     result = []
+    # while zero is less than len of arrA & arrB
     while leftindex < len(arrA) and rightindex < len(arrB):
-        if arrA[leftindex] < arrB[rightindex]:
+        if arrA[leftindex] < arrB[rightindex]:  # check to see if arrA[0] < arrB[0]
+            # add to result array if arrA < arrB
             result.append(arrA[leftindex])
             leftindex += 1  # way to account for all the elements for each appended & find the remaining
             print("leftindex:", leftindex, "result left<right", result)
@@ -38,7 +40,7 @@ def merge(arrA, arrB):
     # TO-DO
     result += arrA[leftindex:]
     result += arrB[rightindex:]
-    return result
+    return result  # ordered array with everything thats left
 # https://www.geeksforgeeks.org/iterative-merge-sort/
 
 # TO-DO: implement the Merge Sort function below USING NONRECURSION
@@ -58,23 +60,24 @@ def merge_sort(arr):
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 arr[k] = L[i]
-                i += 1
+                i += 1  # iterates through i
             else:
                 arr[k] = R[j]
-                j += 1
-            k += 1
+                j += 1  # iteraties through j
+            k += 1  # iterates through k
 
     # check if any element was left
         while i < len(L):
             arr[k] = L[i]
-            i += 1
-            k += 1
+            i += 1  # moves through towards right
+            k += 1  # moves through towards right and makes each k = i
         while j < len(R):
             arr[k] = R[j]
-            j += 1
-            k += 1
+            j += 1  # moves through towards right of remaining j
+            k += 1  # moves through towards right and makes remaining j = k
     print("merge:", arr)
     return arr
+
 
 merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
 # TO-DO: implement the Merge Sort function below USING RECURSION
