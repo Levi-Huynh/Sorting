@@ -131,20 +131,23 @@ def bubble_sort(arr):
 def bubble_sort(arr):
     swapp = True
     while swapp:
-        swapp = False  # doesn't allow swapp to repeat unless arr[i] > arr[i+1]
-        pointer = len(arr)-1
-        for i in range(0, pointer):
-            if arr[i] > arr[i+1]:
-                arr[i], arr[i+1] = arr[i+1], arr[i]
-                swapp = True  # repeat swap
+        swapp = False  # doesn't allow swapp to repeat unless arr[j] > arr[j+1]
+        pointer = len(arr)
+        for i in range(pointer):  # iterate thru all array elements
+            # last i elements are already in place (start loop at
+            for j in range(0, pointer-i-1):
+                # len of arr - i (1,2,3,4,5...) - 1 (always 1 b/c of arrays start at 0)
+                if arr[j] > arr[j+1]:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+                    swapp = True  # repeat swap
 
         # each time repeat the while loop, move closer to start of array (normal for while loop?)
-        pointer -= 1
-        return arr
+
+    return arr
 
 
-print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
-
+#print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
+print(bubble_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 # STRETCH: implement the Count Sort function below
 
 
