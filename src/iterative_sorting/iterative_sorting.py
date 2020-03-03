@@ -3,13 +3,13 @@
 def selection_sort(elements):  # If `elements` is a collection, remember it will be passed by reference, not value
 
   # How many loops will be needed to complete this algorithm?: n-1 elements
-    # How do we know when we are ready to swap values?  when the choosen smallest element is smaller than the indexed element its being compared to 
+    # How do we know when we are ready to swap values?  when the choosen smallest element is smaller than the indexed element its being compared to
     # And how do we keep track of which values should be swapped? have a seperate loop & loop through length of the array
 
   # What, if anything needs to be returned?
 """
 """"
-def centered_average(nums): #also theres methods for min, max, length, sum 
+def centered_average(nums): #also theres methods for min, max, length, sum
   min_num = nums[0]
   max_nums = nums[0]
   sum = 0
@@ -19,10 +19,10 @@ def centered_average(nums): #also theres methods for min, max, length, sum
     length +=1
     if n < min_num:
       min_num = n
-    
+
     if n > max_num:
       max_num =n
-  
+
 return (sum- min_num - max_num)/ (length -2)
 """
 
@@ -33,8 +33,8 @@ def selection_sort( arr ):
         cur_index = i
         smallest_index = cur_index
         # TO-DO: find next smallest element
-        # (hint, can do in 3 loc) 
-        if      
+        # (hint, can do in 3 loc)
+        if
 
 
 
@@ -53,14 +53,16 @@ def selection_sort(arr):
       # THIS LOOP IS JUST YOUR COUNTER
         cur_index = i
         smallest_index = cur_index  # same thing
+        print("first", i)
         # TO-DO: find next smallest element in unsorted array
-        # (hint, can do in 3 loc)
-        # comparision loop: starts as i +1 (index of range) and ends at length of array
-        for j in range(cur_index, len(arr)):
+        # (hint, can do in 3 lines of code)
+        # comparision loop: starts as i +1 (index of range), (compares element to right of smallest index/cur_index) and ends at length of array
 
-          # ^ STARTS OVER HERE EACH TIME, WITH THE CUR_INDEX THAT YOU START AT MOVED UP +1 EACH TIME
+        for j in range(cur_index, len(arr)):
+            print("J", j)
+            # ^ STARTS OVER HERE EACH TIME, WITH THE CUR_INDEX THAT YOU START AT MOVED UP +1 EACH TIME
             if arr[smallest_index] > arr[j]:  # indexed value > arr[j]: #comparison value
-              # ^ DOES THIS UNTIL "NEW LOOP IS DONE "
+                # ^ DOES THIS UNTIL "NEW LOOP IS DONE "
                 smallest_index = j
 
         # TO-DO: swap
@@ -133,20 +135,21 @@ def bubble_sort(arr):
     while swapp:
         swapp = False  # doesn't allow swapp to repeat unless arr[j] > arr[j+1]
         pointer = len(arr)
-        for i in range(pointer):  # iterate thru all array elements
-            # last i elements are already in place (start loop at
-            for j in range(0, pointer-i-1):
-                # len of arr - i (1,2,3,4,5...) - 1 (always 1 b/c of arrays start at 0)
-                if arr[j] > arr[j+1]:
-                    arr[j], arr[j+1] = arr[j+1], arr[j]
-                    swapp = True  # repeat swap
+        # for i in range(pointer):  # iterate thru all array elements
+        # last i elements are already in place (start compare loop at:)
+        for j in range(0, pointer-1):
+                # ^ why this range?  len of arr - i (1,2,3,4,5...) - 1 (always 1 b/c of arrays start at 0)
+                # this move the lenght of the search closer & closer to start
+            if arr[j] > arr[j+1]:  # comparison loop: compare j > j+1 ?
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # if j> j+1, SWAP
+                swapp = True  # Turn swap= True, since SWAP occured, & we have to do another Comparison/ Swap Check
 
         # each time repeat the while loop, move closer to start of array (normal for while loop?)
 
     return arr
 
 
-#print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
+print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 print(bubble_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 # STRETCH: implement the Count Sort function below
 
